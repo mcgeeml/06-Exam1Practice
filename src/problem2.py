@@ -102,7 +102,7 @@ def problem2a(circle, rectangle, window):
       :type window:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -148,7 +148,7 @@ def run_test_problem2b():
     # TWO tests on ONE window.
     title = 'Tests 1 & 2 of problem2b: '
     title += '6 on blue with delta=15, 3 on green with delta=50'
-    window = rg.RoseWindow(550, 450, title)
+    window = rg.RoseWindow(2000, 1280, title)
 
     rectangle = rg.Rectangle(rg.Point(100, 100), rg.Point(140, 120))
     rectangle.fill_color = 'blue'
@@ -161,7 +161,7 @@ def run_test_problem2b():
     window.close_on_mouse_click()
 
     title = 'Test 3 of problem2b: 10 on red with delta=12'
-    window = rg.RoseWindow(400, 350, title)
+    window = rg.RoseWindow(2000, 1280, title)
 
     rectangle = rg.Rectangle(rg.Point(250, 150), rg.Point(200, 200))
     rectangle.fill_color = 'red'
@@ -199,7 +199,7 @@ def problem2b(rect, n, delta, win):
       :type win:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -207,6 +207,18 @@ def problem2b(rect, n, delta, win):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 25 minutes.
     # ------------------------------------------------------------------
+
+    rect.attach_to(win)
+
+    for i in range(n):
+        point = rg.Point(rect._upper_left_corner.x - (2*delta*((i*1)+1)), rect.get_upper_left_corner().y - (2*delta*((i*1)+1)))
+        point2 = rg.Point(rect._lower_right_corner.x + (2*delta*((i*1)+1)), rect.get_lower_right_corner().y + (2*delta*((i*1)+1)))
+
+        rect1 = rg.Rectangle(point, point2)
+        rect1.attach_to(win)
+
+    win.render()
+
 
 
 # ----------------------------------------------------------------------
